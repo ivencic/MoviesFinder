@@ -16,28 +16,35 @@ print("1. Top Searches")
 print("2. Year")
 print("3. Genres")
 print("4. Keyword")
-option = input("Alege opțiunea: ")
-
+option = input("Выберите опцию (соотвествующую цифру): ")
+result = []
 if option == "1":
-    limit = int(input("Introduceți limita de afișare: "))
-    sql_query = f"{max_param} LIMIT {limit}"
+    limit = int(input("Введите лимит : "))
+    sql_query = f"SELECT * FROM movies"
     result = read.execute_query_read(sql_query)
-    for i in len(result):
-        print(result)
+    print(*result)
 
 
 elif option == "2":
+    year = input("Input year find year: ")
+    #limit = input("Введите лимит : ")
+    sql_query = f"SELECT * FROM movies WHERE year LIKE '{year}';"
+    result = read.execute_query_read(sql_query)
+    print(result)
 
-    pass
 elif option == "3":
+    gen = input("Input genres: ")
+    #limit = input("Введите лимит : ")
+    sql_query = f"SELECT * FROM movies WHERE genres LIKE '{gen}';"
+    result = read.execute_query_read(sql_query)
+    print(result)
 
-    pass
 elif option == "4":
+    key = input("Input keyword: ")
+    # limit = input("Введите лимит : ")
+    sql_query = f"SELECT * FROM movies WHERE plot LIKE '%{key}%';"
+    result = read.execute_query_read(sql_query)
+    print(result)
 
-    pass
 else:
-    print("Opțiune invalidă.")
-
-
-
-
+    print("Invalid option.")
